@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: LoginCheckScreen(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -21,7 +22,7 @@ class LoginCheckScreen extends StatefulWidget {
 }
 
 class _LoginCheckScreenState extends State<LoginCheckScreen> {
-  final noScreenshot=NoScreenshot.instance;
+  final noScreenshot = NoScreenshot.instance;
   @override
   void initState() {
     super.initState();
