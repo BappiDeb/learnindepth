@@ -51,21 +51,17 @@ class _LoginScreenState extends State<LoginScreen> {
         };
       }
 
-      // Updated requestData with the detailed machine information
       final Map<String, dynamic> requestData = {
-        'packageid':
-            'your_packageid_value', // Replace with your actual package ID
-        'owner': _emailController.text, // Replace with the owner's actual value
-        'requestmode':
-            'your_requestmode_value', // Replace with the request mode value
-        'machineDetails':
-            machineDetails, // Use the detailed machine information
-        'email': _emailController.text, // Use the email entered by the user
+        'packageid': 'your_packageid_value',
+        'owner': _emailController.text,
+        'action': 'CheckUserOnly',
+        'machineDetails': machineDetails,
+        'email': _emailController.text,
       };
 
       final response = await http.post(
         Uri.parse(
-            'https://www.in-depth-academy.com/_functions/getvirtualkey_iphone'),
+            'https://www.learn-in-depth.com/_functions/getvirtualkey_iphone'),
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode(requestData),
       );
@@ -73,18 +69,18 @@ class _LoginScreenState extends State<LoginScreen> {
       final data = jsonDecode(response.body);
       final String message = data['message'] ?? '';
       final bool valid = data['valid'] ?? false;
+      final String returnUrl = data['returnUrl'] ?? '';
 
       if (valid) {
-        // Save the email for later use
         await _saveLoginStatus(_emailController.text);
 
-        // Navigate to the next screen
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => NextScreen()),
+          MaterialPageRoute(
+            builder: (context) => NextScreen(returnUrl: returnUrl),
+          ),
         );
 
-        // Display final message
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text(message)),
         );
