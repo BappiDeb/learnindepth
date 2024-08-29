@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:indepthacademy/LoginScreen.dart';
+import 'package:learnindepth/LoginScreen.dart';
 import 'package:flutter/services.dart';
 import 'package:no_screenshot/no_screenshot.dart';
 
 class NextScreen extends StatefulWidget {
-  final String returnUrl;
-  NextScreen({required this.returnUrl});
-
   @override
   _NextScreenState createState() => _NextScreenState();
 }
@@ -105,7 +102,8 @@ class _NextScreenState extends State<NextScreen>
               Expanded(
                 child: InAppWebView(
                   initialUrlRequest: URLRequest(
-                    url: WebUri(widget.returnUrl), //widget.returnUrl
+                    url: WebUri(
+                        'https://www.in-depth-academy.com/student-yarapatmaged'),
                   ),
                   initialOptions: InAppWebViewGroupOptions(
                     crossPlatform: InAppWebViewOptions(
@@ -300,29 +298,6 @@ class _NextScreenState extends State<NextScreen>
         : AppBar(
             title: Text(_userEmail),
             actions: [
-              IconButton(
-                icon: Icon(Icons.arrow_back),
-                onPressed: () async {
-                  if (_webViewController != null) {
-                    final currentUrl = await _webViewController?.getUrl();
-                    if (currentUrl.toString() == widget.returnUrl) {
-                      return;
-                    }
-                    if (await _webViewController!.canGoBack()) {
-                      _webViewController!.goBack();
-                    } else {
-                      Navigator.of(context).pop();
-                    }
-                  }
-                },
-              ),
-              IconButton(
-                icon: Icon(Icons.home),
-                onPressed: () {
-                  _webViewController?.loadUrl(
-                      urlRequest: URLRequest(url: WebUri(widget.returnUrl)));
-                },
-              ),
               IconButton(
                 icon: Icon(Icons.logout),
                 onPressed: () async {

@@ -1,4 +1,4 @@
-# indepthacademy
+# learnindepth
 
 A new Flutter project.
 

@@ -52,16 +52,19 @@ class _LoginScreenState extends State<LoginScreen> {
       }
 
       final Map<String, dynamic> requestData = {
-        'packageid': 'your_packageid_value',
-        'owner': _emailController.text,
-        'action': 'CheckUserOnly',
-        'machineDetails': machineDetails,
-        'email': _emailController.text,
+        'packageid':
+            'your_packageid_value', // Replace with your actual package ID
+        'owner': _emailController.text, // Replace with the owner's actual value
+        'requestmode':
+            'your_requestmode_value', // Replace with the request mode value
+        'machineDetails':
+            machineDetails, // Use the device information gathered above
+        'email': _emailController.text, // Use the email entered by the user
       };
 
       final response = await http.post(
         Uri.parse(
-            'https://www.learn-in-depth.com/_functions/getvirtualkey_iphone'),
+            'https://www.in-depth-academy.com/_functions/getvirtualkey_iphone'),
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode(requestData),
       );
@@ -69,16 +72,12 @@ class _LoginScreenState extends State<LoginScreen> {
       final data = jsonDecode(response.body);
       final String message = data['message'] ?? '';
       final bool valid = data['valid'] ?? false;
-      final String returnUrl = data['returnUrl'] ?? '';
 
       if (valid) {
         await _saveLoginStatus(_emailController.text);
-
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(
-            builder: (context) => NextScreen(returnUrl: returnUrl),
-          ),
+          MaterialPageRoute(builder: (context) => NextScreen()),
         );
 
         ScaffoldMessenger.of(context).showSnackBar(
@@ -108,6 +107,12 @@ class _LoginScreenState extends State<LoginScreen> {
     final prefs = await SharedPreferences.getInstance();
     prefs.setBool('isLoggedIn', true);
     prefs.setString('userEmail', email);
+  }
+
+  Future<void> _clearLoginStatus() async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.remove('isLoggedIn');
+    prefs.remove('userEmail');
   }
 
   @override
