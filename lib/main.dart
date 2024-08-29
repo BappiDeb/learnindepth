@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
-import 'package:learnindepth/LoginScreen.dart';
-import 'package:learnindepth/NextScreen.dart';
+import 'package:indepthacademy/LoginScreen.dart';
+import 'package:indepthacademy/NextScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:no_screenshot/no_screenshot.dart';
 import 'package:http/http.dart' as http;

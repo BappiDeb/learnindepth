@@ -1,4 +1,4 @@
-package com.keroles.learnindepth;
+package com.keroles.indepthacademy;
 
 import io.flutter.embedding.android.FlutterActivity;
 

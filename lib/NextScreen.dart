@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:learnindepth/LoginScreen.dart';
+import 'package:indepthacademy/LoginScreen.dart';
 import 'package:flutter/services.dart';
 import 'package:no_screenshot/no_screenshot.dart';
 

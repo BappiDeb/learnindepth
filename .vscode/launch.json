@@ -5,18 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "learnindepth",
+            "name": "indepthacademy",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "learnindepth (profile mode)",
+            "name": "indepthacademy (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "learnindepth (release mode)",
+            "name": "indepthacademy (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
